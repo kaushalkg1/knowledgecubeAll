@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.31658a1f.css",
+    "main.js": "/static/js/main.8d354446.js",
+    "static/media/knowledgecube.gif": "/static/media/knowledgecube.b91e596fac19b00ae3db.gif",
+    "static/media/Become-Creator.gif": "/static/media/Become-Creator.98b0e6ce4962f8d70e2d.gif",
+    "static/media/coverPic.gif": "/static/media/coverPic.7decc3721e96ced60409.gif",
+    "static/media/userImg.gif": "/static/media/userImg.a23b237b2326803e6b4a.gif",
+    "static/media/assignment_add_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/assignment_add_FILL0_wght200_GRAD0_opsz40.73861cba8fd251f7af4d6b4bc88b6747.svg",
+    "static/media/maps_ugc_FILL0_wght200_GRAD-25_opsz40.svg": "/static/media/maps_ugc_FILL0_wght200_GRAD-25_opsz40.81c30f4dc1631e241eac5dd8b9091b89.svg",
+    "static/media/person_add_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/person_add_FILL0_wght200_GRAD0_opsz40.e31924360cd8f17cc0d3243ec7660463.svg",
+    "static/media/add_a_photo_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/add_a_photo_FILL0_wght200_GRAD0_opsz40.2e338195c2fa1e264a28a57bf0d0a589.svg",
+    "static/media/add_circle_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/add_circle_FILL0_wght200_GRAD0_opsz40.a0330d64c57bde121921a01e3aed2e06.svg",
+    "static/media/bookmark_manager_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/bookmark_manager_FILL0_wght200_GRAD0_opsz40.9e5daeaf90e600ca2ee725e178ea2866.svg",
+    "static/media/post_add_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/post_add_FILL0_wght200_GRAD0_opsz40.4dd52ad5c6c2a1984817120fa3b3334f.svg",
+    "index.html": "/index.html",
+    "static/media/castle_FILL0_wght200_GRAD-25_opsz40.svg": "/static/media/castle_FILL0_wght200_GRAD-25_opsz40.cc8eacb327120da1b1e70eef268e2c5f.svg",
+    "static/media/store_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/store_FILL0_wght200_GRAD0_opsz40.2dc049797c7755fc746c89e21e0aa28a.svg",
+    "static/media/fullscreen_FILL0_wght200_GRAD0_opsz40.svg": "/static/media/fullscreen_FILL0_wght200_GRAD0_opsz40.71e18ed680b6b0d3490657d1c3aa8352.svg",
+    "static/media/close_FILL0_wght200_GRAD-25_opsz40.svg": "/static/media/close_FILL0_wght200_GRAD-25_opsz40.896dc24f198f1ae1b97b21070f725885.svg",
+    "main.31658a1f.css.map": "/static/css/main.31658a1f.css.map",
+    "main.8d354446.js.map": "/static/js/main.8d354446.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31658a1f.css",
+    "static/js/main.8d354446.js"
+  ]
+}

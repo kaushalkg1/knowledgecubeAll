@@ -1,0 +1,77 @@
+.editButton{
+    padding:10px 15px; 
+    background: #99cc99;
+    color:#fff;
+    float:right;
+    text-align: center;
+    width: 60px;
+    cursor:pointer;
+    cursor:hand;
+    border-radius:5px;
+    margin-top:5px;
+    
+}
+.gridCardProfile{
+    display: grid;
+    grid-template-columns: 45% 45%;
+}
+.outer-profile-photos{
+    position: relative;
+}
+.profile-outer-right{
+    padding:10px 15px; 
+    background: #fafafa;
+    color:#fff;
+    
+    text-align: center;
+    
+    cursor:pointer;
+    cursor:hand;
+    border-radius:5px;
+    margin-top:5px;
+}
+.closeButton{
+    background: #222;
+    
+    text-align: center;
+    
+    cursor:pointer;
+    cursor:hand;
+    
+}
+.editCover{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size: 15px;
+    padding:10px 15px;
+    border-radius: 5px;;
+    color:#fff;
+    background: #222;
+    z-index: 99;
+    box-shadow:0 7px 20px 0 rgba(1,1,1,0.01);
+}
+.editProfile{
+    box-shadow:0 7px 20px 0 rgba(1,1,1,0.01);
+    position:absolute;
+    top:70px;
+    right:20px;
+    left:30px;
+    font-size: 15px;
+    padding:10px ;
+    border-radius: 5px;;
+   
+    z-index: 99;
+}
+@media(max-width:767px){
+    .editButton{
+        
+        width: 100% !important;
+       
+        
+    }
+    .gridCardProfile{
+        display: grid;
+        grid-template-columns: 95%;
+    }
+}

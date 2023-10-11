@@ -1,0 +1,140 @@
+
+.login-signup-backgrop{
+    position: fixed;
+    
+    top:0px;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    z-index:9999;
+   background:rgba(153, 204, 153, 0.5) !important;
+}
+.login-signup-card{
+    position: relative;
+   display:grid;
+   grid-template-columns: 10%  80% 10%;
+}
+.login-signup-inner{
+   display:grid;padding: 5px;margin: 5px;;
+   grid-template-columns:  50% 50%;
+}
+
+.login-signup-left,.login-signup-right{
+ 
+    box-shadow:var(--shadow-default);
+    margin: 10px;;padding:10px;border-radius: 5px;
+}
+.login-signup-card-outer{box-shadow:var(--shadow-default);
+    background:#fff; padding: 10px;
+    border-radius: 5px;; margin: 10px;;
+    
+    height: 92vh;
+    overflow: auto;}
+    .login-signup-title{
+        box-shadow:var(--shadow-default);
+    background:#fff; 
+    border-radius: 5px;; margin: 10px;;
+    font-size: 20px; display:grid;
+   grid-template-columns:  50% 50%;
+    text-align: center;
+    }
+    .login-signup{ padding: 10px;
+        cursor: pointer;
+       }.login-signup-active{ 
+        background:#99cc99 !important;
+        color: #fff  !important;
+       }
+        .login-input-card-half{
+              
+              display:grid;
+              grid-template-columns: 50% 50% ;
+         }
+    .login-input-card{
+               padding: 5px;
+             margin:0px;
+             display:grid;
+             grid-template-columns: 10% 90% ;
+        }
+        .login-icon{
+            box-shadow:var(--shadow-default);
+      background: #fff;
+     border-radius: 50%;
+     width:40px;height:40px;
+     text-align: center;margin-top:15px;
+        }
+
+        .login-signup-button{
+            box-shadow:var(--shadow-default);
+            font-size: 16px;;cursor: pointer;
+            color:#fff;padding: 15px 20px ;
+         border-radius: 5px;;
+            margin:10px;;
+            background:#99cc99;
+            text-align: center;
+        }
+        .login-remember-me{
+            font-size: 12px;box-shadow:var(--shadow-default);
+            cursor: pointer;
+            ;padding: 15px 20px ;
+        }
+        .login-forgot-pass{
+            font-size: 12px;box-shadow:var(--shadow-default);
+            text-align: center;
+            ;padding: 15px 20px ; 
+            cursor: pointer;
+        }
+    /* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+    .login-signup-card{
+   
+   grid-template-columns:15%  70% 15%;
+
+}.login-signup-inner{
+   
+   grid-template-columns:  100% ;
+}
+
+.login-input-card{
+               
+             grid-template-columns: 20% 80% ;
+        }
+        .login-signup-left,.login-signup-right,.login-signup-inner{
+ 
+ margin: 0px;;padding:0px;
+}
+
+}
+
+/* xs */
+@media (max-width: 767px) {
+    .login-signup-card{
+   
+        grid-template-columns:0%  100% 0%;
+   
+}
+.user-outer-left-open,.user-outer-left-close{
+    display:block;
+} 
+
+.login-input-card{
+             
+             grid-template-columns: 100% ;
+        }
+        .login-signup-inner{
+   
+   grid-template-columns:  100% ;
+}
+.login-input-card{
+               
+               grid-template-columns: 20% 80% ;
+          }
+          .login-input-card-half{
+              
+              grid-template-columns: 100%  ;
+         }
+         .login-signup-left,.login-signup-right,.login-signup-inner{
+ 
+ margin: 0px;;padding:0px;
+}
+
+}

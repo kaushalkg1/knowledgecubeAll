@@ -1,0 +1,44 @@
+.outer-creator-img,.creator-img-vals{
+
+    box-shadow:0 7px 20px 0 rgba(1,1,1,0.01);
+    color: #ffffff;
+background:rgba(153, 204, 153, 0.21) !important;
+padding: 19px;; text-align: center;
+    border-radius: 19px;
+    margin-right:10px;
+    margin-left: 10px;;
+}
+.creator-img{
+    width: 99%;
+}
+.creator-img-vals{
+    color: #222;
+font-size: 24px;
+    font-weight: 900;
+    background:#fff !important; 
+    padding: 19px;; 
+    border-radius: 15px;;margin:19px;
+}
+.editButton-creator-img{
+
+    color: #222;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 900;
+    background:#99cc99 !important; 
+    padding: 19px;; 
+    border-radius: 15px;;margin:19px;
+}
+.align-btn-creator{
+    text-align: center;
+    display: grid;
+grid-template-columns: 70% 30%;
+}
+/* xs */
+@media (max-width: 767px) {
+    .align-btn-creator{
+        text-align: center;
+        display: grid;
+    grid-template-columns: 100% ;
+    }
+}

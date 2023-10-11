@@ -1,0 +1,29 @@
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbarUser {    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 99999999999999999991; /* Add a z-index if needed */
+    left: 30%; right:30%; /* Center the snackbar */
+    /* 30px from the bottom */
+    
+    bottom: 0px;  animation-delay: 0s;animation-duration: 3s;animation-iteration-count:
+     1;animation-fill-mode: both;animation-name: mySnackbar ;
+  }
+  @media(max-width:767px){
+    #snackbarUser { 
+        left: 0%; right:0px;
+    }
+
+  }
+  
+  @keyframes mySnackbar 
+{
+  0% {transform: translate(00px,-10px);}
+  20% {transform: translate(00px,-60px);}
+  25%,65%,95% {transform: translate(0px,-120px);}
+
+  100% {transform: translate(0px,100px);;}
+  }

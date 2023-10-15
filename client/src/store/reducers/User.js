@@ -11,12 +11,22 @@ const initState = {
 
       
        
-      //  console.log(action?.payload);
-        return {...state, user:action?.payload }
-         
+        //  console.log(action?.payload);
+          return {...state, user:action?.payload }
+           
+            
           
-        
-      } 
+        } case "INITUSER": {
+
+      
+       
+          //  console.log(action?.payload);
+            return {...state, user:action?.payload }
+             
+              
+            
+          } 
+      
       case "LOGOUT": {
 
         localStorage.clear()

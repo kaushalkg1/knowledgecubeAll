@@ -9,9 +9,12 @@ import AddButton from  "./icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg";
 import KnowledgeCube from "./img/knowledgecube.gif";
 
 
-import Navber from "../Navbar";
+import Navber from "../Navbar/UserMenu";
+import Loading from "./Loading/Loading";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+
+import {  Link  } from "react-router-dom";
 const SignUp = ()=>{
 
  const dispatch = useDispatch();
@@ -23,6 +26,7 @@ const SignUp = ()=>{
  const token = useSelector((state)=>state?.user?.user?.user?.currentToken);
 
 
+ const [loader , setLoader] =useState({status:false});
  const [signup, setSignup] = useState({firstName:"",lastName:"",userName:"",email:'',password:"",
  acceptTermsAndConditions:false,
  subscribeToNewsleter:false,phoneNumber:+91,age:"",bio:"",gender:""
@@ -47,6 +51,7 @@ const handleSignUp=(e)=>{
   e.preventDefault();
 //console.log(signup)
 
+setLoader({status:true});
   const user = dispatch(userSignup(signup));
   /* get response as Promise   */
   user.then(response => {
@@ -54,11 +59,14 @@ const handleSignUp=(e)=>{
    
 
 /* resetting Signup input Fields */
+
 setSignup({firstName:"",lastName:"",userName:"",email:'',password:"",
 acceptTermsAndConditions:false,
 subscribeToNewsleter:false,phoneNumber:+91,age:"",bio:"",profilePhoto:"",coverPhoto:""
 
 })
+
+setLoader({status:false});
 
 history.push('/dashboard/profile');
   }).catch(error => {
@@ -69,7 +77,8 @@ acceptTermsAndConditions:false,
 subscribeToNewsleter:false,phoneNumber:+91,age:"",bio:"",profilePhoto:"",coverPhoto:""
 
 })
-    console.error(error);
+setLoader({status:false});
+  //  console.error(error);
   });
  
   }
@@ -92,6 +101,8 @@ subscribeToNewsleter:false,phoneNumber:+91,age:"",bio:"",profilePhoto:"",coverPh
 <Navber/>
 </div></div></div>
 </> :<>
+
+{<Loading  Load={loader?.status}/>}
   <form onSubmit={handleSignUp} >
   <div  className="login-signup-backgropj"><div  className="login-signup-card"><div  className="blank"> </div>
   <div  className="login-signup-card-outerj"><div  className="login-signup-inner">
@@ -174,6 +185,10 @@ subscribeToNewsleter:false,phoneNumber:+91,age:"",bio:"",profilePhoto:"",coverPh
 	
 	<div  className="login-input-card"><div  className="login-iconAdmin"><img src={AddButton} alt="Add "/></div>
   <button  className="login-signup-button" type="submit" id="signupBtn">Create Account</button></div></div>
+  <div className="course-bottom"><div></div><Link to="./login">
+      <div className="course-btn-green">
+      Already Have Account? Login
+    </div> </Link></div>
   </div><div style={{"textAlign":"center"}}>
     <img src={KnowledgeCube} alt="KnowledgeCube" style={{"width":"55% " }} /></div></div><div  className="blank"></div></div></div>
    </form>

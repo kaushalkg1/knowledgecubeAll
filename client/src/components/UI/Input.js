@@ -12,7 +12,7 @@ return(
     <div  className="login-signup-card-outer">
  <div  className="login-signup-inner"> 
  
-    <div  className="login-signup-left-signup"><h1 style={{"textAlign":"center"}}>Update {name} </h1>
+    <div  className="login-signup-left-signup"><h1 style={{"textAlign":"center"}}>Update {title} </h1>
     <div  className="login-input-card"><div  className="login-iconAdmin"></div>
     <input type={type} placeholder={placeholder} className="input-textbox" title={title} value={valueInput.val} name={name}  
      onChange={e=>{

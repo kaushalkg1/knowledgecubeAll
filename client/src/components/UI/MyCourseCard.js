@@ -1,14 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import {Link, useRouteMatch } from "react-router-dom";
+import {Link } from "react-router-dom";
 import CourseIcon from "../img/coverPic.gif";
 import Icon from "../icons/castle_FILL0_wght200_GRAD-25_opsz40.svg";
 
 import UserImg from "../img/userImg.gif";
-const MyCourseCard = ({course}) =>{
+const MyCourseCard = ({course,baseUrl}) =>{
     
-    const {url} =useRouteMatch();
   const userdata = useSelector((state)=>state?.user?.user?.user);
 return(<><div className="course-card ">
 <div className="course-status">{course?.filter}</div>
@@ -42,7 +41,7 @@ return(<><div className="course-card ">
              </div>
              <div className="course-bottom">
             
-<Link to={`/courses/${course?._id}`}>
+<Link to={`/search/courses/${course?._id}`}>
 <div className="course-btn-white">
               Go To Course
               </div>
@@ -50,7 +49,7 @@ return(<><div className="course-card ">
               {course.author.currentToken===userdata.currentToken?
                  
 
-<Link to={`${url}/${course._id}`}> <div className="course-btn-green">
+<Link to={`/dashboard/my-courses/${course._id}`}> <div className="course-btn-green">
              Edit
               </div> </Link> :""}
              </div>

@@ -1,8 +1,8 @@
-/*
-create api folder and index.js file inside it .
+/*create api folder and index.js file inside it .
  here we write api code to connect to database (for doing database operations)
  use axios for making api calls */
-import axios from "axios";
+
+ import axios from "axios";
 
 
 /* url pointing to backend route */
@@ -28,5 +28,8 @@ const url = 'https://theknowledgecube.onrender.com/api/';
  export const createCourse = (courseData) => axios.post(`${url}/createCourse`,courseData);
  
  export const fetchMyCourses = (mycourseData) => axios.post(`${url}/myCourse`,mycourseData);
+
+ export const fetchValidateMe = (data) => axios.post(`${url}/validateMe`,data);
+ 
  
  

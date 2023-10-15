@@ -7,6 +7,7 @@ import Card from "../../UI/Card";
 
 import { useSelector } from "react-redux";
 import {Link, useRouteMatch } from "react-router-dom";
+
 const ProfileCards=({baseUrl})=>{
     const {url} =useRouteMatch();
   
@@ -15,7 +16,7 @@ return(<>
 
 {userdata?.isCreator?
  <Link to={`${baseUrl}/create/createCourse`}>
- <div className="editButton-creator-img" >Create Courses</div>
+ <div className="editButtoncreatelink" >Create New Course</div>
  </Link>
  
  :<Link to={`${baseUrl}/become-instructor`} >

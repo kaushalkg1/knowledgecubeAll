@@ -1,9 +1,10 @@
+import * as api from "../../api"; 
+
+
 import { getAllCourses } from "./FetchCourses";
 
 
 import { getMyCourses } from "./FetchMyCourses";
-
-
 
 // with Thunk
 export const initCourses = () => dispatch => {
@@ -39,11 +40,18 @@ export const initMyCourses = (data) => dispatch => {
   
 };
 
-export const initUser = (data) => dispatch => {
-   dispatch({
-    type: "LOGIN",
-    
-    payload:data
-  });
-
+export const initUser = (userData) => async (dispatch)=>{
+  try {
+      const {data } = await api.fetchValidateMe(userData);
+        dispatch({
+          type: "INITUSER",
+          
+          payload:data
+        }); 
+       
+      return data ;
+  } catch (error) {
+      console.log(error);
+  }
 }
+

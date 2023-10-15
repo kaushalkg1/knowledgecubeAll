@@ -6,9 +6,10 @@ import ProfileCards from "./ProfileCards";
 import UserDetails from "./UserDetails";
 
 import { useRouteMatch,Switch, Route } from "react-router-dom";
+import SocialLinks from "./SocialLinks";
  const Profile = ({baseUrl})=>{
     // const {category} = useParams();
-   const {url} =useRouteMatch();
+   const {url,path} =useRouteMatch();
     
     
   const userdata = useSelector((state)=>state?.user?.user?.user);
@@ -16,7 +17,7 @@ import { useRouteMatch,Switch, Route } from "react-router-dom";
  
 <div className="outer-profile content-top">
 <div className="outer-profile-in  ">
-<div className="outer-profile-title ">My Profile
+<div className="outer-profile-title ">My Profile {path.substring(path.lastIndexOf("/")+1)}
 
 </div><div className="outer-profile-subvals outer-profile-title ">
     {"Hey "+(userdata?.firstName?userdata?.firstName:" There! ")+" Welcome to KnowledgeCube" }</div>
@@ -34,9 +35,13 @@ import { useRouteMatch,Switch, Route } from "react-router-dom";
          </Route>
         <Route path={`${url}/user-details`}>
 
-        <UserDetails></UserDetails>
+        <UserDetails/>
         
         </Route>
+        <Route path={`${url}/social-profiles`}>
+<SocialLinks/>
+
+</Route>
     </Switch>
 
 </div>

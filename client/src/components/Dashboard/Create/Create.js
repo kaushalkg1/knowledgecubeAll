@@ -3,31 +3,43 @@ import React ,{useState} from "react";
 
 import '../../UI/snackbar.css';
 import { useDispatch } from "react-redux";
-import createNewCourse from "../../icons/assignment_add_FILL0_wght200_GRAD0_opsz40.svg";
+import createNew from "../../icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg";
+ import arrowIcon from "../../icons/chevron_right_FILL0_wght200_GRAD0_opsz40.svg";
 import { CreateCourse } from "../../../store/actions/CreateCourse";
  
 import { useSelector } from "react-redux";
 
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import {Link, useRouteMatch,Switch, Route } from "react-router-dom";
+
+import CardBig from "../../UI/CardBig";
+import Loading from "../../Loading/Loading";
 
 const CreateCourses = ({baseUrl})=>{
    
     const {url,path} =useRouteMatch();
  const dispatch = useDispatch();
  
+
+ const history = useHistory();
+ 
  const userdata = useSelector((state)=>state?.user?.user?.user);
+ const [loader , setLoader] =useState({status:false});
+ 
  const [addDetails, setAddDetails]= useState({show:false,id:''})
  const [showSnackBar , setSnackBar] = useState({status:false,show:false})
  const [courseCreate , setCourseCreate] = useState({title:"",description:"",author:userdata.id})
 /* Handle Signup Function */
 const handleCreateCourse=(e)=>{
     e.preventDefault();
+    
+setLoader({status:true});
   //console.log(signup)
   
     const courseData = dispatch(CreateCourse(courseCreate));
     /* get response as Promise   */
     courseData.then(response => {
-           console.log(response);
+         //  console.log(response);
         
         if(response?.courseBundle){
           //  console.log(response?.user?.lastName);
@@ -41,6 +53,7 @@ const handleCreateCourse=(e)=>{
         
         }
     
+setLoader({status:false});
     
     })
     
@@ -49,25 +62,67 @@ const handleCreateCourse=(e)=>{
     
 
     return <>
+    
+{<Loading Load={loader?.status}/>}
     { (showSnackBar.status && showSnackBar.show ) ?  <div id="snackbarUser" >
     The Course Has Been Created </div>: '' }
  { (!showSnackBar.status && showSnackBar.show ) ? 
   <div id="snackbarUser" >Some Error Occured. Please Try Again.</div> : '' }
 
-    <Link to={`${url}/createCourse`}><div className="create-card add-cursor">
-                <div className="create-card-icon">
-                    <img src={createNewCourse} alt="create New Course"/>
-                </div> <div className="create-card-text">
-                    <div className="create-card-title">
-                        Create New  Course
-                 
-                    </div> 
-                    <div className="create-card-description">
-                  Lorem ipsum dolor sit amet consectetur, 
-                    </div> 
-                </div> </div>
+{userdata?.isCreator?<>
+    <Link to={`${url}/createCourse`}>
+               
+                <CardBig arrow={arrowIcon}  icon={createNew} alt="Create New  Course" title="Create New  Course" details=" Start Creating
+                  New  Courses With Our Online Tool"  />
+       
  </Link>
  
+ <Link to={`${url}/createPage`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create Course Page" title="Create Course Details Page" details=" 
+               Create Course Details Page With Related Links "  />
+      
+</Link>
+ <Link to={`${url}/createStudent`}>
+               
+               <CardBig  arrow={arrowIcon}  icon={createNew} alt="Create New  Student" title="Create New  Student" 
+               details=" Manually Create Your Students for Your Courses." />
+      
+</Link><Link to={`${url}/createGroup`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create  Group" title="Create Group" details=" Create Batch-Wise Group For 
+               Your Students " />
+      
+</Link>
+<Link to={`${url}/createBlog`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create  Blog" title="Create Blog"details=" Create New  Blog  To Engage Your Students"  />
+      
+</Link>
+<Link to={`${url}/createPost`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create Post" title="Create  Post" details="Create New  Post To Engage Your Students"  />
+      
+</Link>
+<Link to={`${url}/createEvent`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create Event" title="Create Event" details="Create New  Event , Live test , Webinar etc For All"  />
+      
+</Link>
+
+<Link to={`${url}/createNotification`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create Notification" title="Create Notifications" details="Create New  Notification For Your Students"  />
+      
+</Link>
+<Link to={`${url}/createSlides`}>
+               
+               <CardBig arrow={arrowIcon}  icon={createNew} alt="Create Slides" title=" Create Slides" details="Create  Slides And Record Videos For teaching "  />
+      
+</Link>
+</>:
+ history.push('/dashboard/profile')}
+
 <Switch>
 
     
@@ -104,7 +159,7 @@ const handleCreateCourse=(e)=>{
   {addDetails.show?<div  className="login-input-card"><div  className="login-iconAdmin">
   </div>
   <Link to={`${baseUrl}/my-courses/${addDetails.id}`}>
-  <div className="login-signup-button closeButton" >Add Details</div>
+  <div className="login-signup-button closeButtonBlack" >Add Details</div>
   </Link></div> :
   <div  className="login-input-card"><div  className="login-iconAdmin"></div>
 <button  className="login-signup-button" type="submit"  id="update"> Create  </button>
@@ -113,7 +168,7 @@ const handleCreateCourse=(e)=>{
   <div  className="login-input-card"><div  className="login-iconAdmin">
   </div>
   <Link to={url}>
-  <div className="login-signup-button closeButton" >close</div>
+  <div className="login-signup-button closeButtonBlack" >close</div>
   </Link>
   </div></div>
    </div>

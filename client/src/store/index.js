@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage";
 const config = {
   key: "root",
   storage,
-  blacklist: ["catalog"]
+  blacklist: ["knowledgeCube"]
 };
 
 const persistedReducer = persistReducer(config, rootReducer);

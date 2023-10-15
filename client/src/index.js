@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
   we have to dispatch getpost action using useDispatch hook in App.js file */
 root.render(
   <React.StrictMode>
-  
+ 
   <Provider store={store.store}>
-       <App />
+  <App />
   </Provider> 
   </React.StrictMode>
 );

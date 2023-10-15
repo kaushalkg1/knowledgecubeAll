@@ -3,8 +3,11 @@ import CourseIcon from "../img/coverPic.gif";
 import Icon from "../icons/castle_FILL0_wght200_GRAD-25_opsz40.svg";
 
 import {Link } from "react-router-dom";
+
 import UserImg from "../img/userImg.gif";
 const CourseCard = ({course}) =>{
+  
+ 
 return(<>
 <div className="course-card ">
   <div className="course-status">{course?.filter}</div>
@@ -24,6 +27,7 @@ return(<>
                     </div> 
                 </div> 
                 
+<Link to={`/search/user/${course?.author?._id}`}>
                 <div  className=" item-card  add-cursor" >
             <div  className="item-icon">
             <img src={UserImg}  style={{ "width":"50px","height":"50px","borderRadius":"50%"}}alt="User"/> 
@@ -32,13 +36,13 @@ return(<>
            By {course?.author?.firstName}
             </div>
         </div>
-                
+        </Link>
                <div className="course-tabs-outer">
                <div className="course-tabs">Language: {course?.language}</div>   <div className="course-tabs">{course?.payment}</div> 
                </div>
                <div className="course-bottom">
               
-<Link to={`/courses/${course?._id}`}>
+<Link to={`/search/courses/${course?._id}`}>
 <div className="course-btn-white">
                 Go To Course
                 </div>

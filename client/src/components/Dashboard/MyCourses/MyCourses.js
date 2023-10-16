@@ -25,7 +25,7 @@ import CardSmall from "../../UI/CardSmall";
 
 import loadable from '@loadable/component';
 const ArrCards= [1,2,3,4,5,6,7,8,9];
-let lazyLoad =   <LoadingCards cards={ArrCards}/>;
+let lazyLoad =   <LoadingCards cards={ArrCards} type="CourseCard"/>;
 const MyCourseCard = loadable(() => import("../../UI/MyCourseCard"), {
   fallback: lazyLoad  });
 const MyCourses = ({baseUrl})=>{
@@ -33,7 +33,7 @@ const MyCourses = ({baseUrl})=>{
   const [statusLoading , setStatusLoading] = useState({status:true});
   const callLoader =()  =>{
     setStatusLoading({status:true})
-    setTimeout(()=>{setStatusLoading({status:false})},3000)
+    setTimeout(()=>{setStatusLoading({status:false})},1000)
  
   }
   const allCourses=(courses)=>{
@@ -73,7 +73,7 @@ const MyCourses = ({baseUrl})=>{
    
      dispatch(initMyCourses(data))
      setStatusLoading({status:true})
-     setTimeout(()=>{setStatusLoading({status:false})},3000)
+     setTimeout(()=>{setStatusLoading({status:false})},1000)
  
    // eslint-disable-next-line react-hooks/exhaustive-deps
    },[dispatch,MyCourseCard])
@@ -117,7 +117,7 @@ const MyCourses = ({baseUrl})=>{
 
 </div>
 
-{ statusLoading.status?<LoadingCards cards={ArrCards} />:
+{ statusLoading.status?<LoadingCards cards={ArrCards} type="CourseCard" />:
 <>
 
 <Switch>

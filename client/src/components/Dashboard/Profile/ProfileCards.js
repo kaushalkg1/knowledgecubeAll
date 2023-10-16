@@ -1,20 +1,29 @@
-import React from "react";
+import React,{useState} from "react";
 
 
 import createIcon from "../../icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg";
 
-import Card from "../../UI/Card";
 
 import { useSelector } from "react-redux";
 import {Link, useRouteMatch } from "react-router-dom";
+import LoadingCards from "../../Loading/LoadingCards";
 
+import loadable from '@loadable/component';
+const ArrCards= [1,2,3,4,5,6,7,8,9];
+let lazyLoad =   <LoadingCards cards={ArrCards} type="ExtraSmallCard"/>;
+const Card = loadable(() => import("../../UI/Card"), {
+  fallback: lazyLoad  });
 const ProfileCards=({baseUrl})=>{
+  
+ const [statusLoading , setStatusLoading] = useState({status:true});
     const {url} =useRouteMatch();
   
     const userdata = useSelector((state)=>state?.user?.user?.user);
+    
+setTimeout(()=>{setStatusLoading({status:false})},1000)
 return(<>
 
-{userdata?.isCreator?
+{statusLoading.status?<LoadingCards cards={ArrCards} type="ExtraSmallCard" />:userdata?.isCreator?
  <Link to={`${baseUrl}/create/createCourse`}>
  <div className="editButtoncreatelink" >Create New Course</div>
  </Link>

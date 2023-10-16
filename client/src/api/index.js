@@ -5,9 +5,9 @@
  import axios from "axios";
 
 
-/* url pointing to backend route */
-//const url = 'http://localhost:3002/api/';
-const url = 'https://theknowledgecube.onrender.com/api/'; 
+/* url pointing to backend route */   
+   const url = 'http://localhost:3002/api/'; 
+//const url = 'https://theknowledgecube.onrender.com/api/'; 
 
 
  export const fetchAllCourses =  () => axios.get(url);

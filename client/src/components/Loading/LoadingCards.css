@@ -32,7 +32,7 @@
                           background-position: 468px 0;
                         }
                       }
-                      .animated-background, .text-line,.text-linetw, .image,.imagetw,.btnall,.imagepallet,.imagepalletque,.imagepalletquetop,.imagepalletquetopall,.imagepalletquebottom,.imagepalletquebottomNextSec,.imagepalletsecall,.imagepalletoption,.imagepalletoptiontw,.imagepalletoptionth {
+                      .animated-background, .text-description,.text-line-extra-small-card,.text-line,.text-linetw, .image,.imagetw,.btnall,.imagepallet,.imagepalletque,.imagepalletquetop,.imagepalletquetopall,.imagepalletquebottom,.imagepalletquebottomNextSec,.imagepalletsecall,.imagepalletoption,.imagepalletoptiontw,.imagepalletoptionth {
                         -webkit-animation-duration: 1.25s;
                                 animation-duration: 1.25s;
                         -webkit-animation-fill-mode: forwards;
@@ -53,6 +53,11 @@
                       .image {
                         height: 80px;
                         width: 160px;  margin: 4px 0;margin-bottom:30px;
+                      }
+                      .text-description{
+                        height: 20px;
+                        width: 180px;  margin-left: 10px;margin-top: 30px;margin-bottom:10px;
+                
                       }
                           .imagepallet {
                        padding:10px;
@@ -77,4 +82,11 @@
                         width: 100px ;
                         margin-left: 10px ;
                         margin-top: 10px ;
+                      }
+
+                      .text-line-extra-small-card { float: left;
+                        height: 15px;
+                        width: 150px ;
+                        margin-left: 0px ;
+                        margin-top: 0px ;
                       }

@@ -11,7 +11,7 @@ import loadable from '@loadable/component';
 
 import LoadingCards from "../Loading/LoadingCards";
 const ArrCards= [1,2,3,4,5,6,7,8,9]
-let lazyLoad =   <LoadingCards cards={ArrCards}/>;
+let lazyLoad =   <LoadingCards cards={ArrCards} type="CourseCard"/>;
 
 const CourseCard = loadable(() => import("../UI/CourseCard"), {
   fallback: lazyLoad  });

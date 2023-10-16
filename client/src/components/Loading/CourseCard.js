@@ -1,6 +1,6 @@
 import React  from "react";
 
-const TheCard =() =>{
+const Card =() =>{
 return <><div className="course-card ">
 <div className="course-status"></div>
 <div className="course-badge"></div>
@@ -45,4 +45,4 @@ return <><div className="course-card ">
               </div></>
 }
 
-export default TheCard;
+export default Card;

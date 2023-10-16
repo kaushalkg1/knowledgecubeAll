@@ -1,9 +1,11 @@
 import React from "react";
- import TheCard from "./TheCard";
+ import CourseCard from "./CourseCard";
  import "./LoadingCards.css"
-const LoadingCards =({cards}) =>{
-  
-
-    return(cards.map((course) => (<TheCard/>)))
+import SmallCard from "./SmallCard";
+import ExtraSmallCard from "./ExtraSmallCard";
+const LoadingCards =({cards,type}) =>{
+   if(type==='CourseCard'){return(cards.map((course) => (<CourseCard/>)))}
+   if(type==='SmallCard'){ return(cards.map((course) => (<SmallCard/>)))}
+   if(type==='ExtraSmallCard'){ return(cards.map((course) => (<ExtraSmallCard/>)))}
 }
 export default LoadingCards;

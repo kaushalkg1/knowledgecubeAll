@@ -12,9 +12,16 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import {Link, useRouteMatch,Switch, Route } from "react-router-dom";
 
-import CardBig from "../../UI/CardBig";
 import Loading from "../../Loading/Loading";
 
+import loadable from '@loadable/component';
+
+import LoadingCards from "../../Loading/LoadingCards";
+const ArrCards= [1,2,3,4,5,6,7,8,9]
+let lazyLoad =   <LoadingCards cards={ArrCards} type="SmallCard"/>;
+
+const CardBig  = loadable(() => import("../../UI/CardBig"), {
+  fallback: lazyLoad  });
 const CreateCourses = ({baseUrl})=>{
    
     const {url,path} =useRouteMatch();
@@ -26,10 +33,14 @@ const CreateCourses = ({baseUrl})=>{
  const userdata = useSelector((state)=>state?.user?.user?.user);
  const [loader , setLoader] =useState({status:false});
  
+ const [statusLoading , setStatusLoading] = useState({status:true});
  const [addDetails, setAddDetails]= useState({show:false,id:''})
  const [showSnackBar , setSnackBar] = useState({status:false,show:false})
  const [courseCreate , setCourseCreate] = useState({title:"",description:"",author:userdata.id})
 /* Handle Signup Function */
+
+setTimeout(()=>{setStatusLoading({status:false})},1000)
+
 const handleCreateCourse=(e)=>{
     e.preventDefault();
     
@@ -69,7 +80,8 @@ setLoader({status:false});
  { (!showSnackBar.status && showSnackBar.show ) ? 
   <div id="snackbarUser" >Some Error Occured. Please Try Again.</div> : '' }
 
-{userdata?.isCreator?<>
+
+{ statusLoading.status?<LoadingCards cards={ArrCards} type="SmallCard" />:userdata?.isCreator?<>
     <Link to={`${url}/createCourse`}>
                
                 <CardBig arrow={arrowIcon}  icon={createNew} alt="Create New  Course" title="Create New  Course" details=" Start Creating

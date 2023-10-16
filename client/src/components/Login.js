@@ -9,11 +9,12 @@ import KnowledgeCube from "./img/knowledgecube.gif";
 import Navber from "../Navbar/UserMenu";
 import { useSelector } from "react-redux";
 import Loading from "./Loading/Loading";
-
+import "./UI/snackbar.css";
 import {  Link  } from "react-router-dom";
 //import { setCookie } from "../api";
 const Login = ()=>{
-   
+  const [showSnackBar , setSnackBar] = useState({status:false,show:false})
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -33,29 +34,36 @@ const Login = ()=>{
 const handleLogin=(e)=>{
   e.preventDefault();
   setLoader({status:true});
+  
+  setSnackBar({status:true,show:true});
   const user = dispatch(userLogin(login));
   /* get response as Promise  and set it in redux or state and display it with useEffect */
   user.then(response => {
   // console.log(response);
-  // console.log(response);
+   console.log(response);
   
 
 /* resetting Login input Fields */
 setLogin({email:'',password:""})
 
 setLoader({status:false});
- history.push('/dashboard/profile')
+setSnackBar({status:false, show:true});
+response?setTimeout(function(){setSnackBar({status:false, show:true}); }, 3000):setTimeout(function(){setSnackBar({status:false, show:true}); }, 3000);
+
+;
+response?history.push('/dashboard/profile') : setLoader({status:false});
  }).catch(error => {
-  // console.error(error);
    
-setLoader({status:false});
+  setLogin({email:'',password:""})
+ 
  });
 
 }
 
 
     return (<>
-    
+   
+
 {(token===localToken&&token&&localToken)?
 <>
 <div className="outer-all "><div className = {` outer-left `}  id="outer-left">
@@ -75,7 +83,12 @@ setLoader({status:false});
 
 
   <form onSubmit={handleLogin} >
-  <div  className="login-signup-backgrop"><div  className="login-signup-card"><div  className="blank"> </div>
+  <div  className="login-signup-backgrop">
+  { (showSnackBar.status && showSnackBar.show ) ?  <div id="snackbarUser" >Attempting To Log In.</div> : '' }
+ { (!showSnackBar.status && showSnackBar.show ) ? 
+  <div id="snackbarUser" > Credentials Dont Match.</div> : '' }
+    
+    <div  className="login-signup-card"><div  className="blank"> </div>
   <div  className="login-signup-card-outer"><div  className="login-signup-inner">
     <div  className="login-signup-left-signup"><h1 style={{"textAlign":"center"}}>User Login</h1>
     <div  className="login-input-card"><div  className="login-iconAdmin"><img src={ Email } alt=""/></div>

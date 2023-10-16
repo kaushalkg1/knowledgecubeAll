@@ -6,6 +6,7 @@ import { getAllCourses } from "./FetchCourses";
 
 import { getMyCourses } from "./FetchMyCourses";
 
+
 // with Thunk
 export const initCourses = () => dispatch => {
   getAllCourses().then(response => {
@@ -22,12 +23,28 @@ export const initCourses = () => dispatch => {
 };
 
 
+
+export const addToMyCourses = (courses) => dispatch => {
+   
+  // setting mycourses with every update of one course or api call of one course .
+  
+ // console.log(courses);
+
+  dispatch({
+    type: "FETCH_MY_COURSES",
+    
+    payload:courses
+  });
+  
+};
+
+
 // with Thunk
 export const initMyCourses = (data) => dispatch => {
  
   getMyCourses(data).then(response => {
    // return response.data.posts; 
-//console.log(response);
+//console.log(response.data.posts); 
    
     dispatch({
       type: "FETCH_MY_COURSES",

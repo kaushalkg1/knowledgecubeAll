@@ -7,7 +7,6 @@
 
 /* url pointing to backend route */
 //const url = 'http://localhost:3002/api/';
-
 const url = 'https://theknowledgecube.onrender.com/api/'; 
 
 
@@ -23,11 +22,12 @@ const url = 'https://theknowledgecube.onrender.com/api/';
  
  export const userSignup = (signup) => axios.post(`${url}/signup`,signup);  
  
- export const updateUserData = (updateUserData) => axios.post(`${url}/updateUser`,updateUserData);
+ export const updateUserData = (Data) => axios.post(`${url}/updateUser`,Data);
  
- export const createCourse = (courseData) => axios.post(`${url}/createCourse`,courseData);
+ export const createCourse = (Data) => axios.post(`${url}/createCourse`,Data);
  
- export const fetchMyCourses = (mycourseData) => axios.post(`${url}/myCourse`,mycourseData);
+ export const fetchMyCourses = (Data) => axios.post(`${url}/myCourses`,Data);
+ export const fetchMyCourse = (Data) => axios.post(`${url}/myCourse`,Data);
 
  export const fetchValidateMe = (data) => axios.post(`${url}/validateMe`,data);
  

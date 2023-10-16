@@ -16,13 +16,14 @@ import NotFound from "../../NoMatch/NotFound";
 
 import LoadingCards from "../../Loading/LoadingCards";
 
-import loadable from '@loadable/component';
 import createIcon from "../../icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg";
 
 import Card from "../../UI/Card";
 
 import {Link } from "react-router-dom";
 import CardSmall from "../../UI/CardSmall";
+
+import loadable from '@loadable/component';
 const ArrCards= [1,2,3,4,5,6,7,8,9];
 let lazyLoad =   <LoadingCards cards={ArrCards}/>;
 const MyCourseCard = loadable(() => import("../../UI/MyCourseCard"), {

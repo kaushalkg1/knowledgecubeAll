@@ -9,19 +9,6 @@
     border-radius: 15px;;margin:19px;
 }
 
-.editButton{
-    padding:10px 15px; 
-    background: #99cc99;
-    color:#fff;
-    float:right;
-    text-align: center;
-    width: 60px;
-    cursor:pointer;
-    cursor:hand;
-    border-radius:5px;
-    margin-top:5px;
-    
-}
 .gridCardProfile{
     display: grid;
     grid-template-columns: 45% 45%;

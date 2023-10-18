@@ -2,7 +2,7 @@
 import React,{useState} from "react";
 import {Link } from "react-router-dom";
 
-const TextArea= ({onchange,onclose,placeholder,name,value,baseUrl ,title}) =>{
+const TextArea= ({onchange,placeholder,name,value,baseUrl ,title}) =>{
     
  const [valueInput , setValueInput] = useState({val:value});
 return(
@@ -39,7 +39,7 @@ return(
   <div  className="login-input-card"><div  >
   </div>
   <Link to={baseUrl}>
- <div className="login-signup-button closeButton" onClick={onclose}>close</div>
+ <div className="login-signup-button closeButton" >close</div>
  </Link>
   
   </div>

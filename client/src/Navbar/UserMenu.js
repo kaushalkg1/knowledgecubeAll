@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 
 import createIcon from "../components/icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg";
@@ -9,23 +9,34 @@ import myEnrollmentsIcon from "../components/icons/store_FILL0_wght200_GRAD0_ops
 import myDashboard from "../components/icons/castle_FILL0_wght200_GRAD-25_opsz40.svg";
 import myWishlist from "../components/icons/add_a_photo_FILL0_wght200_GRAD0_opsz40.svg";
 import Logout from "../components/Logout";
-import CardNav from "../components/UI/CardNav";
 
 import { useSelector } from "react-redux";
    
 // import { useSelector } from "react-redux";
 
 import {Link } from "react-router-dom";
+
+import LoadingCards from "../components/Loading/LoadingCards";
+
+import loadable from '@loadable/component';
+const ArrCards= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+let lazyLoad =   <LoadingCards cards={ArrCards} type="ExtraSmallCard"/>;
+const CardNav = loadable(() => import("../components/UI/CardNav"), {
+  fallback: lazyLoad  });
 const Navber=()=>{
+
+  
+ const [statusLoading , setStatusLoading] = useState({status:true});
     const localToken= JSON.parse(localStorage.getItem("profile"))?.data?.user?.currentToken;
     const token = useSelector((state)=>state?.user?.user?.user?.currentToken);
   
+setTimeout(()=>{setStatusLoading({status:false})},1000)
      const userdata = useSelector((state)=>state?.user?.user?.user);
     return (<>
 
 
 
-{(token===localToken&&token&&localToken)?<>
+{statusLoading.status?<LoadingCards cards={ArrCards} type="ExtraSmallCard" />:(token===localToken&&token&&localToken)?<>
     <Link   to="/dashboard/profile">
     <CardNav  icon={profileIcon} alt="User" title={userdata?.firstName?("Hey "+userdata?.firstName+" !!! "):"Hey User !!!"}  >
 </CardNav>

@@ -2,7 +2,7 @@ import React,{useState} from "react";
 
 import {Link } from "react-router-dom";
 
-const Calender = ({onchange,onclose,placeholder,name,value,baseUrl ,title})=>{ 
+const Calender = ({onchange,placeholder,name,value,baseUrl ,title})=>{ 
     
  const [valueInput , setValueInput] = useState({val:value});
      return(<>
@@ -33,7 +33,7 @@ const Calender = ({onchange,onclose,placeholder,name,value,baseUrl ,title})=>{
   <div  className="login-input-card"><div  className="login-iconAdmin">
   </div>
   <Link to={baseUrl}>
- <div className="login-signup-button closeButton" onClick={onclose}>close</div>
+ <div className="login-signup-button closeButton" >close</div>
  </Link>
   
   </div>

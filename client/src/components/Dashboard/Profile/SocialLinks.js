@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { updateUserData } from "../../../store/actions/User";
 import "./Profile.css";
 import { useDispatch } from "react-redux";
-import {Link, useRouteMatch,Switch, Route } from "react-router-dom";
-
+import { useRouteMatch,Switch, Route } from "react-router-dom";
+ 
 import Input from "../../UI/Input";
 import facebookIcon from "../../img/facebook.png";
 import twitterIcon from "../../img/twitter.png";
@@ -15,6 +15,7 @@ import instagramIcon from "../../img/instagram.png";
 import githubIcon from "../../img/network.png";
 
 import Loading from "../../Loading/Loading";
+import EditCard from "../../UI/EditCard";
 const SocialLinks =() =>{
 
   // const {category} = useParams();
@@ -24,8 +25,7 @@ const SocialLinks =() =>{
   const userdata = useSelector((state)=>state?.user?.user);
   //console.log(userdata)
   const [data, setData]= useState({field:'',title:'',value:'',id:userdata?.user?.id?userdata?.user?.id:'',token:userdata?.token?userdata?.token:''});
-  const [togleInput,setToggleInput] = useState({type:'',status:false})
-  const [showSnackBar , setSnackBar] = useState({status:false,show:false})
+   const [showSnackBar , setSnackBar] = useState({status:false,show:false})
   
  const [loader , setLoader] =useState({status:false});
 /* handle Login function  */
@@ -61,8 +61,7 @@ setLoader({status:false});
 
  });
 
-    setToggleInput({...togleInput,status:false})
-
+    
 
 }
 const inputGetValue = 
@@ -72,109 +71,57 @@ const inputGetValue =
         
    
     }
-const Closeit = (e) =>setToggleInput({...togleInput,status:false});
+    
     return(<>  
     <h3> Social Links </h3>
     
 {<Loading Load={loader?.status}/>}
 { (showSnackBar.status && showSnackBar.show ) ?  
-<div id="snackbarUser" >{data.title}  has been Changed to {data.value}.</div> : '' }
+<div id="snackbarUser" >{data.value?data.title +"has been Changed to "+data.value : data.title +" has been Removed "}.</div> : ''  }
  { (!showSnackBar.status && showSnackBar.show ) ? 
   <div id="snackbarUser" >Couldn`t update {data.title}  | Error Occured.</div> : '' }
 
-  
-<div className="outer-profile-name ">
+<EditCard  
+ url={url} name="email"  icon={websiteIcon} title="" button="N"
+value={userdata?.user.email?userdata?.user.email:''}
+/>
+<EditCard  icon={facebookIcon} 
+ url={url} name="facebook"  title=""
+value={userdata?.user?.socialProfile?.facebook?userdata?.user?.socialProfile?.facebook:''}
+/>
 
-<div className="outer-profile-vals "> <img className="socialIcons" src={facebookIcon}  alt="facebookIcon"/> </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.facebook?userdata?.user?.socialProfile?.facebook:''}
-<Link to={`${url}/facebook`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'facebook',status:true})}}>Edit</div>
-</Link>
-</div>
+<EditCard  icon={twitterIcon} 
+ url={url} name="twitter"  title=""
+value={userdata?.user?.socialProfile?.twitter?userdata?.user?.socialProfile?.twitter:''}
+/>
+<EditCard  icon={linkedInIcon} 
+ url={url} name="linkedIn"  title=""
+value={userdata?.user?.socialProfile?.linkedIn?userdata?.user?.socialProfile?.linkedIn:''}
+/>
+<EditCard  icon={githubIcon} 
+ url={url} name="github"  title=""
+value={userdata?.user?.socialProfile?.github?userdata?.user?.socialProfile?.github:''}
+/>
+<EditCard  icon={instagramIcon} 
+ url={url} name="instagram"  title=""
+value={userdata?.user?.socialProfile?.instagram?userdata?.user?.socialProfile?.instagram:''}
+/>
+<EditCard  icon={youtubeIcon} 
+ url={url} name="youtube"  title=""
+value={userdata?.user?.socialProfile?.youtube?userdata?.user?.socialProfile?.youtube:''}
+/>
+<EditCard  
+ url={url} name="website"  title="Website"
+value={userdata?.user?.socialProfile?.website?userdata?.user?.socialProfile?.website:''}
+/>
 
-
-</div>
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "> <img className="socialIcons" src={twitterIcon}  alt="twitter Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.twitter?userdata?.user?.socialProfile?.twitter:''}
-<Link to={`${url}/twitter`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'twitter',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "> <img className="socialIcons" src={linkedInIcon}  alt="linkedIn Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.linkedIn?userdata?.user?.socialProfile?.linkedIn:''}
-<Link to={`${url}/linkedIn`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'linkedIn',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "><img className="socialIcons" src={githubIcon}  alt="github Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.github?userdata?.user?.socialProfile?.github:''}
-<Link to={`${url}/github`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'github',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
-
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "> <img className="socialIcons" src={youtubeIcon}  alt="youtube Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.youtube?userdata?.user?.socialProfile?.youtube:''}
-<Link to={`${url}/youtube`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'youtube',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "> <img className="socialIcons" src={instagramIcon}  alt=" Instagram Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.instagram?userdata?.user?.socialProfile?.instagram:''}
-<Link to={`${url}/instagram`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'instagram',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
-
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals "> <img className="socialIcons" src={websiteIcon}  alt="website Icon"/>  </div> 
-<div className="outer-profile-subvals ">{userdata?.user?.socialProfile?.website?userdata?.user?.socialProfile?.website:''}
-<Link to={`${url}/website`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'website',status:true})}}>Edit</div>
-</Link>
-</div>
-
-
-</div>
 
 <Switch>
 
 <Route path={`${path}/facebook`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="facebook" type="text" title=" Facebook Link" baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.facebook?userdata?.user?.socialProfile?.facebook:''}
+ <Input name="facebook" type="text" title=" Facebook Link" baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.facebook?userdata?.user?.socialProfile?.facebook:''}
  placeholder="Add Facebook Link" />
  
  </form>
@@ -182,7 +129,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/twitter`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="twitter" type="text" title=" Twitter Link " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.twitter?userdata?.user?.socialProfile?.twitter:''}
+ <Input name="twitter" type="text" title=" Twitter Link " baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.twitter?userdata?.user?.socialProfile?.twitter:''}
  placeholder="Add Twitter Link" />
  
  </form>
@@ -190,7 +137,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/linkedIn`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="linkedIn" type="text" title=" LinkedIn  Link" baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.linkedIn?userdata?.user?.socialProfile?.linkedIn:''}
+ <Input name="linkedIn" type="text" title=" LinkedIn  Link" baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.linkedIn?userdata?.user?.socialProfile?.linkedIn:''}
  placeholder="Add LinkedIn Link" />
  
  </form>
@@ -198,7 +145,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/github`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="github" type="text" title=" Github Link " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.github?userdata?.user?.socialProfile?.github:''}
+ <Input name="github" type="text" title=" Github Link " baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.github?userdata?.user?.socialProfile?.github:''}
  placeholder="Add Github Link" />
  
  </form>
@@ -206,7 +153,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/website`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="website" type="text" title=" Website  Link" baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.website?userdata?.user?.socialProfile?.website:''}
+ <Input name="website" type="text" title=" Website  Link" baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.website?userdata?.user?.socialProfile?.website:''}
  placeholder="Add Website Link" />
  
  </form>
@@ -214,7 +161,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/youtube`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="youtube" type="text" title=" Youtube  Link" baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.youtube?userdata?.user?.socialProfile?.youtube:''}
+ <Input name="youtube" type="text" title=" Youtube  Link" baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.youtube?userdata?.user?.socialProfile?.youtube:''}
  placeholder="Add Youtube Link" />
  
  </form>
@@ -222,7 +169,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/instagram`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="instagram" type="text" title=" Instagram  Link" baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user?.socialProfile?.instagram?userdata?.user?.socialProfile?.instagram:''}
+ <Input name="instagram" type="text" title=" Instagram  Link" baseUrl={url}  onchange={inputGetValue} value={userdata?.user?.socialProfile?.instagram?userdata?.user?.socialProfile?.instagram:''}
  placeholder="Add Instagram Link" />
  
  </form>

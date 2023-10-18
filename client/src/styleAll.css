@@ -1,3 +1,15 @@
+
+.grid-70{
+    display:grid;
+    padding: 10px;
+    grid-template-columns: 70% 30% ;
+}
+.outer-all-card-white{  background: #fff;
+        box-shadow:var(--shadow-default);
+        padding: 15px;; 
+        border-radius: 15px;;margin:10px;
+    font-size: 14px;
+}
 .courses-top-bar{
     display:grid;
     grid-template-columns: 20% 20% 10% 10% 10% 10% 10% 10% ;
@@ -150,13 +162,13 @@
 .outer-profile{
    
    
-    padding: 20px;
+    padding: px;
 
 }
 .outer-profile-in{
     box-shadow: 0 7px 20px 0 rgba(1,1,1,0.04);
    
-    padding: 10px;
+    padding: 18px;
 }
 .outer-profile-title{
     font-size: 30px;
@@ -167,7 +179,8 @@
     font-size: 20px;
     color:#222;
      padding: 10px;
- }.outer-profile-subvals{
+ }
+ .outer-profile-subvals{
     font-size: 15px;
     color:#444;
      padding: 13px;
@@ -188,6 +201,67 @@
     color:#99cc99;
      padding: 10px;
  }
+ .outer-edit-card{
+   
+    display: grid;
+    grid-template-columns: 25% 75%;
+    
+   background:rgba(153, 204, 153, 0.2) !important;
+   
+   box-shadow: 0 7px 20px 0 rgba(1,1,1,0.01);
+     padding: 10px;
+     
+     border-radius: 10px;
+    margin-top: 10px;;
+    
+    margin-bottom: 0px;;
+ }
+ .edit-card-title{
+    font-size: 16px;
+    background:#fff;
+    color:#222;text-align: center;
+    box-shadow: 0 7px 20px 0 rgba(1,1,1,0.04);
+    height: 20px; border-radius: 10px;
+    font-weight: 900;
+    margin-bottom: 0px;;
+     padding: 15px;
+ } .edit-card-value{
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+
+    color:#222;
+    margin-bottom: 0px;;
+     padding: 15px;
+ } .edit-card-button{
+    font-size: 15px;
+    color:#444;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    
+    margin-bottom: 0px;;
+ }
+ .edit-card-icon{
+    width: 30px;;
+    position: relative;
+    top:-5px;
+}
+.edit-button{
+    padding:10px 15px; 
+    background: #99cc99;
+    color:#fff;
+    border: 3px solid #fff;
+    float:right;
+    text-align: center;
+    width: 60px;
+    cursor:pointer;
+    cursor:hand;
+    border-radius:10px;
+    margin-top:5px;
+
+}
  .outer-profile-photos{
     display: grid;
     grid-template-columns: 100%;
@@ -222,6 +296,62 @@
     z-index:9999;
    background:rgba(153, 204, 153, 0.5) !important;
 }
+.popup-backgrop{
+    position: fixed;
+    
+    top:70px;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    z-index:999999999;
+   background:rgba(153, 204, 153, 0.5) !important;
+}
+
+.popup-card{
+    position: relative;
+    display:grid;
+    grid-template-columns: 25% 50% 25%;
+}.popup-outer{box-shadow:var(--shadow-default);
+    background:#fff; padding: 10px;
+    border-radius: 5px;; margin: 10px;;
+    
+    height: 82vh;
+    overflow: auto;}
+
+    .popup-inner{
+        display:grid;padding: 5px;margin: 5px;;
+        grid-template-columns:  100% ;
+     }
+     .popup-input-card{
+        padding: 5px;
+      margin:0px;
+      display:grid;
+      grid-template-columns: 100% ;
+ }.popup-button-card{
+    padding: 5px;
+  margin:0px;
+  display:grid;
+  grid-template-columns: 70% 30% ;
+}
+.black-button{   box-shadow:var(--shadow-default);
+    font-size: 16px;;cursor: pointer;
+    color:#fff;padding: 15px 20px ;
+ border-radius: 5px;;
+    margin:10px;;
+    background:#222;
+    text-align: center; 
+    border:0px !important;
+}
+.green-button{
+    box-shadow:var(--shadow-default);
+    font-size: 16px;;cursor: pointer;
+    color:#fff;padding: 15px 20px ;
+ border-radius: 5px;; 
+    margin:10px;;
+    background:#99cc99;
+    text-align: center;
+    border:0px !important;
+}
 .login-signup-card{
     position: relative;
    display:grid;
@@ -231,11 +361,10 @@
     position: relative;
    display:grid;
    grid-template-columns: 25% 70% 5%;
-}
-.login-signup-inner{
-   display:grid;padding: 5px;margin: 5px;;
-   grid-template-columns:  100% ;
-}
+}.login-signup-inner{
+    display:grid;padding: 5px;margin: 5px;;
+    grid-template-columns:  100% ;
+ }
 
 .login-signup-left,.login-signup-right{
  
@@ -248,6 +377,7 @@
     
     height: 82vh;
     overflow: auto;}
+    
     .login-signup-card-outerj{box-shadow:var(--shadow-default);
         background:#fff; padding: 10px; padding-top: 60px;
         border-radius: 5px;; margin: 10px;;
@@ -322,12 +452,12 @@
         }
     /* sm */
 @media (min-width: 768px) and (max-width: 991px) {
-    .outer-profile-name{
+    .outer-profile-name,.outer-edit-card{
        
         grid-template-columns: 30% 70%;
        
      }
-  .login-signup-card,.dashboard-card,.knowledgecubeNotFound-card,.knowledgecubeNotFound-card-two{
+  .login-signup-card,.popup-card,.dashboard-card,.knowledgecubeNotFound-card,.knowledgecubeNotFound-card-two{
    
    grid-template-columns:15%  70% 15%;
 
@@ -350,8 +480,8 @@
 
 /* xs */
 @media (max-width: 767px) {
-    .outer-top-name,
-    .outer-profile-name,.knowledgecubeNotFound-card,.knowledgecubeNotFound-card-two{
+    .outer-top-name,.edit-card-button,
+    .outer-profile-name,.outer-edit-card,.knowledgecubeNotFound-card,.knowledgecubeNotFound-card-two{
       
         grid-template-columns: 100% ;
         
@@ -368,7 +498,7 @@
     }.outer-right-style{
         margin-left: -100% !important;
     }
-    .login-signup-card,.dashboard-card{
+    .login-signup-card,.dashboard-card,.popup-card{
    
         grid-template-columns:0%  100% 0%;
    
@@ -455,7 +585,7 @@ cursor:pointer;
     height: 87vh;
     
 } .outer-right{
-    margin-top:70px;
+    margin-top:60px;
     height: var(--viewport-height);
 }
 .content-topk{  
@@ -573,7 +703,7 @@ font-size: 34px;
     
    grid-template-columns: 30% 60% 10% ;
 }
-.create-card:hover,.course-card:hover{
+.create-card:hover,.course-card:hover,.edit-button:hover{
 animation-delay: .0s; animation-duration: .5s;animation-iteration-count: 1;animation-fill-mode:
 both;animation-name: animOne;
 
@@ -687,7 +817,7 @@ font-variation-settings:
 
         grid-template-columns: 100% ;
         }
-    .login-signup-card,.dashboard-card{
+    .login-signup-card,.dashboard-card,.popup-card{
    
         grid-template-columns:5%  90% 5%;
      
@@ -708,10 +838,16 @@ font-variation-settings:
 
 /* xs */
 @media (max-width: 767px) {
+    .edit-button{
+        
+        width: 88% !important;
+        float:none;
+        
+    }
     .outer-left-inn{width:350px;}
         
     
-.outer-all,.outer-logged-in,.outer-create-items{
+.outer-all,.outer-logged-in,.outer-create-items,.grid-70{
    
  
    grid-template-columns: 100% ;

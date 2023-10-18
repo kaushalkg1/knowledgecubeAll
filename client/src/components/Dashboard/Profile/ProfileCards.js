@@ -72,13 +72,21 @@ return(<>
    <Card  icon={createIcon} alt="create" title="Current Job"  >
 
     </Card>
+   </Link>  <Link to={`${url}/previous-jobs`} >
+   <Card  icon={createIcon} alt="create" title="Previous Jobs"  >
+
+    </Card>
    </Link>  
    <Link to={`${url}/my-projects`} >
    <Card  icon={createIcon} alt="create" title="My Projects"  >
 
     </Card>
    </Link> 
- 
+   <Link to={`${url}/privacy`} >
+   <Card  icon={createIcon} alt="create" title="User Settings"  >
+
+    </Card>
+   </Link> 
    
 
 

@@ -6,6 +6,8 @@ import CourseIcon from "../img/coverPic.gif";
 import Icon from "../icons/castle_FILL0_wght200_GRAD-25_opsz40.svg";
 
 import UserImg from "../img/userImg.gif";
+
+
 const MyCourseCard = ({course,baseUrl}) =>{
     
   const userdata = useSelector((state)=>state?.user?.user?.user);

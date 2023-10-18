@@ -11,8 +11,10 @@ import '../../UI/snackbar.css';
 import Calender from "../../UI/Calender";
 import TextArea from "../../UI/TextArea";
 
+import websiteIcon from "../../img/chat.png";
 import iconProfile from "../../icons/add_a_photo_FILL0_wght200_GRAD0_opsz40.svg";
 import Loading from "../../Loading/Loading";
+import EditCard from "../../UI/EditCard";
 const UserDetails =() =>{
 
   // const {category} = useParams();
@@ -36,7 +38,7 @@ const coverPicCss={"width":"100%"}
     
   const userdata = useSelector((state)=>state?.user?.user);
   const [data, setData]= useState({field:'',title:'',value:'',id:userdata?.user?.id?userdata?.user?.id:'',token:userdata?.token?userdata?.token:''});
-  const [togleInput,setToggleInput] = useState({type:'',status:false})
+
   const [showSnackBar , setSnackBar] = useState({status:false,show:false})
 
   
@@ -73,7 +75,6 @@ setLoader({status:false});
    setLoader({status:false});
  });
 
-    setToggleInput({...togleInput,status:false})
 
 
 }
@@ -84,12 +85,12 @@ const inputGetValue =
         
    
     }
-const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     return(<>
     <h3> User Details </h3>
     
 {<Loading Load={loader?.status}/>}
-{ (showSnackBar.status && showSnackBar.show ) ?  <div id="snackbarUser" >{data.title} has been Changed to {data.value}.</div> : '' }
+{ (showSnackBar.status && showSnackBar.show ) ?  <div id="snackbarUser" >
+  {data.value?data.title +"has been Changed to "+data.value : data.title +" has been Removed "}.</div> : '' }
  { (!showSnackBar.status && showSnackBar.show ) ? 
   <div id="snackbarUser" >Couldn`t update {data.title} | Error Occured.</div> : '' }
 
@@ -99,90 +100,52 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
   <img style={profilePicCss}  src={userdata?.user.profilePhoto?userdata?.user.profilePhoto:profilePic} alt="profilePhoto"/>
   
   <Link to={`${url}/profilePhoto`}>
-<div className="editProfile" onClick={e=>{setToggleInput({type:'profilePhoto',status:true})}}>
+<div className="editProfile" >
   <img src={iconProfile} style={{"background":"#fff","padding":"2px", "borderRadius":"50%"}} alt="iconProfile"/> </div>
 </Link>
 </div>
 <img  style={coverPicCss} src={userdata?.user.coverPhoto?userdata?.user.coverPhoto:coverPic} alt="coverPhoto"/>
 <Link to={`${url}/coverPhoto`}>
-<div className="editCover" onClick={e=>{setToggleInput({type:'coverPhoto',status:true})}}>Edit Cover </div>
+<div className="editCover" >Edit Cover </div>
 </Link>
 </div>
 
 </div>
 
 
+<EditCard 
+url={url} name="firstName"  title="First Name"
+value={userdata?.user.firstName?userdata?.user.firstName:""}
+/>
 
-<div className="outer-profile-name ">
+<EditCard  
+ url={url} name="lastName"  title="Last Name"
+value={userdata?.user.lastName?userdata?.user.lastName:''}
+/>
 
-<div className="outer-profile-vals ">First Name </div> 
-<div className="outer-profile-subvals ">{userdata?.user.firstName?userdata?.user.firstName:"Please login to see First Name"}
-<Link to={`${url}/firstName`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'firstName',status:true})}}>Edit</div>
-</Link>
-</div>
+<EditCard  
+ url={url} name="email" icon={websiteIcon}   button="N"
+value={userdata?.user.email?userdata?.user.email:''}
+/>
 
+<EditCard  
+url={url} name="phoneNumber"  title="Phone"
+value={userdata?.user.phoneNumber?userdata?.user.phoneNumber:'Not Available'}
+/>
+<EditCard  
+url={url} name="gender"  title="Gender"
+value={userdata?.user.gender?userdata?.user.gender:'Not Available'}
+/>
+<EditCard  
+url={url} name="dob"  title="DOB"
+value={userdata?.user.age?userdata?.user.age:'Not Available'}
+/>
 
-</div>
+<EditCard  
+url={url} name="bio"  title="Bio"
+value={userdata?.user.bio?userdata?.user.bio:'Not Available'}
+/>
 
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">Last Name</div>
-<div className="outer-profile-subvals ">{userdata?.user.lastName?userdata?.user.lastName:'Not Available'}
-<Link to={`${url}/lastName`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'lastName',status:true})}}>Edit</div>
-</Link>
-
-</div>
-
-
-</div>  
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">Email</div>
-<div className="outer-profile-subvals ">{userdata?.user.email?userdata?.user.email:'Not Available'}
-
-</div>
-
-</div> 
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">Phone</div>
-<div className="outer-profile-subvals ">{userdata?.user.phoneNumber?userdata?.user.phoneNumber:'Not Available'}
-<Link to={`${url}/phoneNumber`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'phoneNumber',status:true})}}>Edit</div>
-</Link></div>
-</div> 
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">Gender</div>
-
-<div className="outer-profile-subvals ">{userdata?.user.gender?userdata?.user.gender:'Not Available'}
-<Link to={`${url}/gender`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'gender',status:true})}}>Edit</div>
-</Link>
-</div>
-   
-
-</div> 
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">DOB</div>
-<div className="outer-profile-subvals ">{userdata?.user.age?userdata?.user.age:'Not Available'}
-<Link to={`${url}/dob`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'dob',status:true})}}>Edit</div>
-</Link>
-</div>
-</div> 
-
-<div className="outer-profile-name ">
-
-<div className="outer-profile-vals ">Bio</div>
-<div className="outer-profile-subvals ">{userdata?.user.bio?userdata?.user.bio:'Not Available'}
-<Link to={`${url}/bio`}>
-<div className="editButton" onClick={e=>{setToggleInput({type:'bio',status:true})}}>Edit</div>
-</Link></div>
-</div> 
 
 
 <Switch>
@@ -191,7 +154,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
      <Route path={`${path}/firstName`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="firstName" type="text" title=" First Name " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user.firstName?userdata?.user.firstName:''}
+ <Input name="firstName" type="text" title=" First Name " baseUrl={url}  onchange={inputGetValue} value={userdata?.user.firstName?userdata?.user.firstName:''}
  placeholder="firstName" />
  
  </form>
@@ -199,7 +162,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/lastName`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="lastName"  type="text" title=" Last Name " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user.lastName?userdata?.user.lastName:''}
+ <Input name="lastName"  type="text" title=" Last Name " baseUrl={url}  onchange={inputGetValue} value={userdata?.user.lastName?userdata?.user.lastName:''}
  placeholder="lastName" />
  
  </form>
@@ -208,7 +171,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/phoneNumber`}>
    <form onSubmit={handleUpdate} >
  
- <Input name="phoneNumber" type="number" title="Phone Number " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user.phoneNumber?userdata?.user.phoneNumber:''}
+ <Input name="phoneNumber" type="number" title="Phone Number " baseUrl={url}  onchange={inputGetValue} value={userdata?.user.phoneNumber?userdata?.user.phoneNumber:''}
  placeholder="phoneNumber" />
  
  </form>
@@ -253,7 +216,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/dob`}>
    <form onSubmit={handleUpdate} >
  
- <Calender name="age" title=" DOB " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user.age?userdata?.user.age:''}
+ <Calender name="age" title=" DOB " baseUrl={url}  onchange={inputGetValue} value={userdata?.user.age?userdata?.user.age:''}
  placeholder="DOB" />
  
  </form>
@@ -261,7 +224,7 @@ const Closeit = (e) =>setToggleInput({...togleInput,status:false});
     <Route path={`${path}/bio`}>
    <form onSubmit={handleUpdate} >
  
- <TextArea name="bio" title=" Bio " baseUrl={url} onclose={Closeit} onchange={inputGetValue} value={userdata?.user.bio?userdata?.user.bio:''}
+ <TextArea name="bio" title=" Bio " baseUrl={url}  onchange={inputGetValue} value={userdata?.user.bio?userdata?.user.bio:''}
  placeholder="Bio" />
  
  </form>

@@ -4,12 +4,21 @@ import { useSelector } from "react-redux";
 import { getMyCourse } from "../../../store/actions/FetchMyCourse";
 import Loading from "../../Loading/Loading";
 
+import { useRouteMatch,Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import {  useDispatch } from "react-redux";
 import { addToMyCourses } from "../../../store/actions/initialization";
+
+import closeIcon from "../../icons/close_FILL0_wght200_GRAD-25_opsz40.svg";
+import EditCourseLinks from "./EditCourseLinks";
+import CreateCourseItemLinks from "./CreateCourseItemLinks";
+import Card from "../../UI/Card";
+import Logo from "../../NoMatch/Logo";
+
 const EditCourse =() =>{
           const {courseEditId} = useParams();
           
+  const {url} =useRouteMatch();
     const history = useHistory();
   const dispatch = useDispatch();
  const [loader , setLoader] =useState({status:true});
@@ -31,7 +40,7 @@ const [courseData , setCourseData] = useState({data:''})
   response.data.course?setCourseData({data:response.data.course}):dispatch({type:"LOGOUT"});
   response.data.course?dispatch(addToMyCourses(response.data.posts)):history.push('/login');
   
-   console.log(response.data.course)
+   //console.log(response.data.course)
            }).catch(error => {
             // console.error(error);
             ;
@@ -45,40 +54,27 @@ return(
     <>
     
 {<Loading Load={loader?.status}/>}
-<div className="outer-profile content-top">
-    <div className="outer-profile-in  ">
-    <div className="outer-profile-title ">
-    <div className="outer-all outer-profile-name">
-    
-<div className="outer-profile-vals ">Title </div>   <div className=" ">
 
-<div className="outer-profile-subvals ">{courseData?.data?.title?courseData?.data?.title:""}
+{courseData?.data?._id?<>
+<div className="outer-all-card-white  grid-70 ">
+ <div className="outer-all-card-white"><h2>
+ {courseData?.data?.title?"Start Editing  '"+courseData?.data?.title+"'":""}</h2>
+ </div>
 
-<div className="editButton" onClick={e=>""}>Edit</div>
+<Link to={`${url}/trash`} >
+<Card  icon={closeIcon} alt="delete" title="Delete Course?"  >
 
-</div>
+ </Card>
+</Link> 
+</div> 
+<div className="outer-all-card-white  grid-70 ">
+<div><EditCourseLinks url={url} courseData={courseData}  /> </div>
 
-
-</div>   </div>
-
-<div className="outer-all outer-profile-name">
-    
-<div className="outer-profile-vals "> Description </div>   <div className=" ">
-
-<div className="outer-profile-subvals ">{courseData?.data?.description?courseData?.data?.description:""}
-
-<div className="editButton" onClick={e=>""}>Edit</div>
-
-</div>
-
-
-</div>   </div>
-        </div>    </div></div>
-     course Edit id
-        {courseData?.data?.title}
-        
-        
-    </> 
+<div> <CreateCourseItemLinks url={url} courseData={courseData}/> </div>
+</div> </> 
+:<Logo/>
+    }
+     </> 
 )
 }
 

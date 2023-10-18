@@ -4,11 +4,13 @@
 
  import axios from "axios";
 
-
 /* url pointing to backend route */   
-   const url = 'http://localhost:3002/api/'; 
-//const url = 'https://theknowledgecube.onrender.com/api/'; 
 
+const domainhref = window.location.origin;
+const domain = window.location.hostname;
+   const url = `${domain==='localhost'?"http://localhost:3002":domainhref }/api/`; 
+  
+// console.log(window.location);
 
  export const fetchAllCourses =  () => axios.get(url);
 

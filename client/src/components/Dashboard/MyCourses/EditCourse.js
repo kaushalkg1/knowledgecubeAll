@@ -71,7 +71,10 @@ return(
 <div><EditCourseLinks url={url} courseData={courseData}  /> </div>
 
 <div> <CreateCourseItemLinks url={url} courseData={courseData}/> </div>
-</div> </> 
+</div>
+
+
+ </> 
 :<Logo/>
     }
      </> 

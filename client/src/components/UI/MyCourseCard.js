@@ -11,7 +11,7 @@ import UserImg from "../img/userImg.gif";
 const MyCourseCard = ({course,baseUrl}) =>{
     
   const userdata = useSelector((state)=>state?.user?.user?.user);
-return(<><div className="course-card ">
+return(<><div className="course-card " >
 <div className="course-status">{course?.filter}</div>
 <div className="course-badge">{course?.status}</div>
 

@@ -1,8 +1,16 @@
-
+.outer-container{
+    display: grid;
+   grid-template-columns:  100%;
+}
 .grid-70{
     display:grid;
     padding: 10px;
     grid-template-columns: 70% 30% ;
+}
+.grid-10auto{
+    display:grid;
+    padding: 10px;
+    grid-template-columns: 10% auto ;
 }
 .outer-all-card-white{  background: #fff;
         box-shadow:var(--shadow-default);
@@ -37,14 +45,16 @@
 .course-card{
     background: #fff;
     position: relative;
-    max-width:27.5%;margin:15px;
+    max-width:25.5%;margin:10px;
+    min-width: 310px;
     box-shadow:var(--shadow-default);
     padding: 15px;;
     float:left;
     border-radius: 15px;;
-    margin-top: 15px;;
+    margin-top: 0px;;
      
 }
+
 .course-img{
     width: 100%;
     padding: 10px;;
@@ -452,6 +462,9 @@
         }
     /* sm */
 @media (min-width: 768px) and (max-width: 991px) {
+    .course-card{
+       
+        min-width: 230px;}
     .outer-profile-name,.outer-edit-card{
        
         grid-template-columns: 30% 70%;
@@ -480,7 +493,15 @@
 
 /* xs */
 @media (max-width: 767px) {
-    .outer-top-name,.edit-card-button,
+    .outer-all-card-white,.grid-10auto{  
+        padding: 5px;; 
+        ;margin:0px;
+   
+}
+    .course-card{
+       
+        min-width: 300px;}
+    .outer-top-name,.grid-10auto,.edit-card-button,
     .outer-profile-name,.outer-edit-card,.knowledgecubeNotFound-card,.knowledgecubeNotFound-card-two{
       
         grid-template-columns: 100% ;
@@ -578,13 +599,19 @@ cursor:pointer;
     ;margin-top:70px;
     height: var(--viewport-height);
     
-}.outer-left-inn{border-radius: 15px;;
-    margin:10px;position: fixed;width:250px;
+}.outer-left-main{border-radius: 15px;;
+    margin:10px;
+      background: #fff;z-index: 9999999;
+    overflow: auto;margin-top:5px;
+    height: 87vh;
+    
+} .outer-left-inn{border-radius: 15px;;
+    margin:10px;position: fixed;width:230px;
       background: #fff;z-index: 9999999;
     overflow: auto;margin-top:10px;
     height: 87vh;
     
-} .outer-right{
+}.outer-right{
     margin-top:60px;
     height: var(--viewport-height);
 }
@@ -780,10 +807,10 @@ font-variation-settings:
 .outer-all{
    
   
-   grid-template-columns: 21% auto;
-}
+   grid-template-columns: 18% auto;
 }
 
+}
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
     .courses-top-bar{
@@ -810,7 +837,7 @@ font-variation-settings:
         grid-template-columns: 30% 0% 15% 15% 15% 15% 15% 15% ;
     }
     
-    .outer-left-inn{width:230px;}
+    .outer-left-inn,.outer-left-main{width:230px;}
         
         .content-top,.content-topk{  
    
@@ -826,13 +853,21 @@ font-variation-settings:
    
         grid-template-columns:  100% ;
      }
+     .outer-left-inn{
+        display: none;
+     }
 .outer-all{
    
   
-   grid-template-columns: 30% 70%;
+   grid-template-columns: 00% 100%;
+}.outer-all-card-white{ 
+    padding: 5px;margin:20px; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
 }
-.create-card,.course-card{margin:5px;
-    max-width:40% !important;
+.create-card,.course-card{margin:0px;
+    max-width:40% !important;min-width: 350px;
 }
 }
 
@@ -844,7 +879,7 @@ font-variation-settings:
         float:none;
         
     }
-    .outer-left-inn{width:350px;}
+    .outer-left-inn,.outer-left-main{width:100%; margin:0px; }
         
     
 .outer-all,.outer-logged-in,.outer-create-items,.grid-70{
@@ -867,7 +902,7 @@ font-variation-settings:
     display:block;
 }
 .create-card,.course-card{
-    max-width:100%;
+    max-width:100%;min-width: 300px;
 }
 .content-top,.content-topk{  
    

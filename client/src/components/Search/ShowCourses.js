@@ -10,6 +10,7 @@ import ShowUser from "./ShowUser";
 import loadable from '@loadable/component';
 
 import LoadingCards from "../Loading/LoadingCards";
+import Carousel from "../UI/Carousel";
 const ArrCards= [1,2,3,4,5,6,7,8,9]
 let lazyLoad =   <LoadingCards cards={ArrCards} type="CourseCard"/>;
 
@@ -36,39 +37,41 @@ const ShowCourses = ()=>{
     const courses = posts?.map((f)=>f);
    // console.log(courses)
     return <>
-    <div className="outer-all ">
-<div className = {` outer-left `}  id="outer-left">
-  
-<div className="outer-left-inn">
-       
       
-      </div>
-    
-    
-    </div>
-    <div className="outer-right">
-        <div className="content-topk">
+      
+            
+             
+<div className="outer-container "> <div className="content-topk">
           
-        </div>
-    
+          </div>   <div className="content-topk">
+          
+          </div> 
+          <div className="outer-all-card-white">
+<h1>  Courses</h1>
+<div className="grid-10auto"><div></div>
+<div>
         {courses?.map((course) => (
          
       <>  
 
-         <CourseCard course={course}/>
+<CourseCard course={course}/>
         
 </>   
-       )) }
-      
-       
+       )) }</div></div>
+ </div>   </div> 
+<div className="outer-container ">
+          <div className="outer-all-card-white">
+<h1>  Courses</h1>
+    <Carousel  type="CourseCard" itemValue={courses}/>
+    </div>   </div> 
 <Switch> 
             
 <Route  path={`/search/user/:userId`}>
 <ShowUser/>
       </Route>
         </Switch>
-        </div>
-        </div>
+       
+      
     </>
 
 }

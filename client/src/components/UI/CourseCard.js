@@ -9,7 +9,7 @@ const CourseCard = ({course}) =>{
   
  
 return(<>
-<div className="course-card ">
+<div className="course-card " >
   <div className="course-status">{course?.filter}</div>
   <div className="course-badge">{course?.status}</div>
 

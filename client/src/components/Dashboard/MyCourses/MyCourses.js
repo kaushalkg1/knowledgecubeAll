@@ -24,6 +24,7 @@ import {Link } from "react-router-dom";
 import CardSmall from "../../UI/CardSmall";
 
 import loadable from '@loadable/component';
+import Carousel from "../../UI/Carousel";
 const ArrCards= [1,2,3,4,5,6,7,8,9];
 let lazyLoad =   <LoadingCards cards={ArrCards} type="CourseCard"/>;
 const MyCourseCard = loadable(() => import("../../UI/MyCourseCard"), {
@@ -122,8 +123,12 @@ const MyCourses = ({baseUrl})=>{
 
 <Switch>
 <Route exact path={`${url}`}>
+  
 <div className="outer-all-card-white"><h1> All Courses</h1>
-</div>
+
+
+{courses?.filter(allCourses)?.length?
+<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(allCourses)}/>:""}</div>
 {courses?.filter(allCourses)?.length?courses?.filter(allCourses)?.map((course) => (
        <MyCourseCard key={course?._id}baseUrl= {baseUrl}   course={course}/>
      )):<NotFound/>}
@@ -135,6 +140,10 @@ const MyCourses = ({baseUrl})=>{
     <Route exact path={`${url}/all`}   >
     <div className="outer-all-card-white">
 <h1> All Courses</h1>
+
+
+{courses?.filter(allCourses)?.length?
+<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(allCourses)}/>:""}
 </div>
 {courses?.filter(allCourses)?.length?courses?.filter(allCourses)?.map((course) => (
        <MyCourseCard key={course?._id} baseUrl= {baseUrl}  course={course}/>
@@ -142,15 +151,25 @@ const MyCourses = ({baseUrl})=>{
 
     </Route>
     <Route path={`${url}/public`}>
-    <div className="outer-all-card-white"><h1> Public Courses</h1></div>
+    <div className="outer-all-card-white"><h1> Public Courses</h1>
+    
+
+{courses?.filter(publicCourses)?.length?<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(publicCourses)}/>:""}
+   
+</div>
 {courses?.filter(publicCourses)?.length?courses?.filter(publicCourses)?.map((course) => (
      <MyCourseCard key={course?._id} baseUrl= {baseUrl}  course={course}/>
    )):<NotFound/>}
 
   </Route>
-  <Route path={`${url}/private`}>
-  <div className="outer-all-card-white">
-<h1> Private Courses</h1></div>
+  <Route path={`${url}/private`}><div className="outer-all-card-white">
+<h1> Private Courses</h1>
+ 
+{
+
+courses?.filter(privateCourses)?.length?
+<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(privateCourses)}/>:""}
+</div> 
 {
 
 courses?.filter(privateCourses)?.length?courses?.filter(privateCourses)?.map((course) => (
@@ -158,9 +177,14 @@ courses?.filter(privateCourses)?.length?courses?.filter(privateCourses)?.map((co
    )):<NotFound/>}
 
   </Route>
-  <Route path={`${url}/paid`}>
-  <div className="outer-all-card-white">
-<h1> Paid Courses</h1></div>
+  <Route path={`${url}/paid`}><div className="outer-all-card-white">
+<h1> Paid Courses</h1>
+
+{
+
+courses?.filter(paidCourses)?.length?
+<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(paidCourses)}/>:""}
+</div>
 {
 
 courses?.filter(paidCourses)?.length?courses?.filter(paidCourses)?.map((course) => (
@@ -170,7 +194,13 @@ courses?.filter(paidCourses)?.length?courses?.filter(paidCourses)?.map((course) 
   </Route>
   <Route path={`${url}/free`}>
   <div className="outer-all-card-white">
-<h1> Free Courses</h1></div>
+<h1> Free Courses</h1>
+{
+
+courses?.filter(freeCourses)?.length?
+<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(freeCourses)}/>:""}
+
+</div>
 {
 
 courses?.filter(freeCourses)?.length?courses?.filter(freeCourses)?.map((course) => (
@@ -179,8 +209,15 @@ courses?.filter(freeCourses)?.length?courses?.filter(freeCourses)?.map((course) 
 
   </Route>
   <Route path={`${url}/trash`}>
+
   <div className="outer-all-card-white">
-<h1> Deleted Courses</h1></div>
+<h1> Deleted Courses</h1>
+
+{
+
+courses?.filter(trashCourses)?.length?<Carousel type="MyCourseCard"  baseUrl= {baseUrl}  itemValue={courses?.filter(trashCourses)}/>:""}
+
+</div>
 {
 
 courses?.filter(trashCourses)?.length? courses?.filter(trashCourses)?.map((course) => (

@@ -1,0 +1,151 @@
+.Outer {
+    
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: grid ;
+    place-items: center
+  }
+  
+  .Carousel-Outer {
+   
+    width: 76vw;
+    max-width: 1400px;
+    
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+  }
+  
+  .Carousel-Outer .btn {
+    position: absolute;
+    top: calc(50% - 30px);
+    height: 50px;
+    color:#fff;
+    cursor: pointer;
+    cursor: hand;
+    width: 50px;
+    background: #99cc99;
+   border-radius: 50%;
+  }
+  .cheveronIcons{
+    padding: 5px;
+    transform: scale(1.3);
+    transition: all .5s;
+  }
+  .Carousel-Outer .btn:hover , .cheveronIcons:hover {
+    transform: scale(1);
+    transition: all .5s;
+  }
+  
+  .Carousel-Outer .btn.inactive {
+    border-color: rgb(153, 121, 126)
+  }
+  
+  .Carousel-Outer .btn.left {
+   
+    left: 0px
+  }
+  
+  .Carousel-Outer .btn.right {
+ 
+    right: 0px;
+  }
+  
+  .Carousel-Outer .Carousel {
+    display: flex;
+    width: 1000%;
+    height: 100%; 
+    transition: all .5s;
+  }
+  
+  .Carousel-Outer .Carousel .Item {
+    
+    margin: auto 5px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+  }
+  
+  .Carousel-Outer .Carousel .Item span {
+   
+    font-size: 10px;
+  }
+  
+  @media only screen and (min-width: 1100px) {
+  
+    .Carousel-Outer .Carousel .Item {
+      width: calc(3.3333333% - 10px);
+    }
+  
+  }
+  
+  @media only screen and (max-width: 1100px) {
+  
+    .Carousel-Outer .Carousel .Item {
+      width: calc(5% - 10px);
+    }
+  
+  }
+  
+  @media only screen and (max-width: 900px) {
+  
+    .Carousel-Outer .Carousel .Item {
+      width: calc(5% - 10px);
+    }
+    .Carousel-Outer {
+   
+        width: 100vw;
+        
+        padding: 0px;
+      }
+  
+  
+  }
+  
+  @media only screen and (max-width: 550px) {
+  
+    .Carousel-Outer .Carousel .Item {
+      width: calc(10% - 10px);
+      
+    }
+    .Carousel-Outer {
+   
+        width: 100vw;
+        
+        padding: 0px;
+      }
+  }
+  
+  /* lg */ 
+  @media (min-width: 1200px) {
+  
+  }
+  
+  /* md */
+  @media (min-width: 992px) and (max-width: 1199px) {
+  
+  }
+  
+  /* sm */
+  @media (min-width: 768px) and (max-width: 991px) {
+  }
+  
+  /* xs */
+  @media (max-width: 767px) {
+    
+  .Carousel-Outer .btn.left {
+   
+    left: 0px
+  }
+  
+  .Carousel-Outer .btn.right {
+ 
+    right: 0px;
+  }
+  }
+  /* XS Portrait */
+  @media (max-width: 479px) {}
+  
